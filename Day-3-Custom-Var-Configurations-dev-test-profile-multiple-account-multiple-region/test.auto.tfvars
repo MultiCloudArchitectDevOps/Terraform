@@ -1,2 +1,6 @@
-test_ami_id = "ami-02dfbd4ff395f2a1b"
-test_instance_type = "t2.nano"
+test_ami_id = "ami-03caad32a158f72db"
+test_instance_type = "t2.micro"
+vpc_cidr              = "10.0.0.0/16"
+public_subnet1_cidr   = "10.0.1.0/24"
+availability_zone_2a  = "us-west-2a"
+env                   = "test"
