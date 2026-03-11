@@ -1,2 +1,2 @@
-dev_ami_id = "ami-02dfbd4ff395f2a1b"
-dev_instance_type = "t2.micro"
+ami_id = "ami-02dfbd4ff395f2a1b"
+instance_type = "t2.medium"
