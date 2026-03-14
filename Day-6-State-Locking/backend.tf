@@ -3,5 +3,6 @@ terraform {
     bucket = "tf-5161-test-s3-yd"
     key    = "terraform.tfstate"
     region = "us-east-1"
+     use_lockfile = true
   }
 }
