@@ -6,8 +6,8 @@ resource "aws_db_instance" "default" {
   engine_version          = "8.0"
   instance_class          = "db.t3.micro"
   username                = "admin"
-   manage_master_user_password = true #rds and secret manager manage this password
-#   password                = "Cloud123"
+   #manage_master_user_password = true #rds and secret manager manage this password
+ password                = "Cloud123"
   db_subnet_group_name    = aws_db_subnet_group.sub-grp.id
   parameter_group_name    = "default.mysql8.0"
 
@@ -118,6 +118,13 @@ resource "aws_db_subnet_group" "sub-grp" {
 #   }
 # }
 
-
-
 # Create replica of the above db instance  #your task 
+
+resource "aws_db_instance" "read_replica" {
+  identifier              = "my-read-replica"
+  replicate_source_db     = aws_db_instance.default.identifier
+  instance_class          = "db.t3.micro"
+
+  publicly_accessible     = false
+  skip_final_snapshot     = true
+}
