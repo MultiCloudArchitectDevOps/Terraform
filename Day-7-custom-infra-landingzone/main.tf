@@ -1,43 +1,42 @@
-# Creation of VPC, Subnet, Internet Gateway, Route Table, and Security Group
+# Creation of VPC, Public Subnet, Private Subnet, Internet Gateway, Elastic IP for NAT, NAT Gateway,
+# Public Route Table, Associate Public Subnet, Private Route Table, Associate Private Subnet,
+# EC2 Instance, and Security Group
 
 resource "aws_vpc" "prod" {
     cidr_block = "10.0.0.0/16"
     tags = {
-        Name = "prod-vpc"
+        Name = "VPC"
     
     }
 }
 
-
-#create nat gateway  (your task)
 #public subnet
 resource "aws_subnet" "public" {
     vpc_id = aws_vpc.prod.id
     cidr_block = "10.0.1.0/24"
-    availability_zone = "us-west-2a"
+    availability_zone = "us-east-1a"
     tags = {
-        Name = "prod-subnet"
+        Name = "Public-Subnet"
     }
 }
 
-#nat associate to private subnet (your task)
 #private subnet
 resource "aws_subnet" "private" {
     vpc_id = aws_vpc.prod.id
     cidr_block = "10.0.2.0/24"
-    availability_zone = "us-west-2a"
+    availability_zone = "us-east-1a"
     tags = {
-        Name = "prod-subnet-2"
+        Name = "Private-Subnet"
     }
 }
 
 resource "aws_internet_gateway" "prod" {
     vpc_id = aws_vpc.prod.id
     tags = {
-        Name = "prod-internet-gateway"
+        Name = "Internet-Gateway"
     }
 }
-#create route table and associate with public subnet
+
 resource "aws_route_table" "prod" {
   vpc_id = aws_vpc.prod.id
     route {
@@ -47,14 +46,10 @@ resource "aws_route_table" "prod" {
     }
 }
 
-#create route table association with private subnet (your task)
-
 resource "aws_route_table_association" "prod" {
     subnet_id = aws_subnet.public.id
     route_table_id = aws_route_table.prod.id
 }
-
-
 
 resource "aws_security_group" "prod" {
     name = "prod-sg"
@@ -85,14 +80,13 @@ resource "aws_security_group" "prod" {
     }
 }
 
-
 resource "aws_instance" "prod" {
-    ami = "ami-03caad32a158f72db"
+    ami = "ami-02dfbd4ff395f2a1b"
     instance_type = "t2.micro"
     subnet_id = aws_subnet.public.id
     vpc_security_group_ids = [aws_security_group.prod.id]
     tags = {
-        Name = "prod-instance"
+        Name = "EC2-Instance"
     }
     
 }
