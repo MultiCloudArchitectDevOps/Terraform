@@ -23,7 +23,7 @@ resource "aws_lambda_function" "my_lambda" {
   function_name = "my_lambda_function"
   role          =  aws_iam_role.lambda_role.arn
   handler       = "lambda_function.lambda_handler"
-  runtime       = "python3.12"
+  runtime       = "python3.14"
   timeout       = 900
   memory_size   = 128
   filename = "lambda_function.zip"
