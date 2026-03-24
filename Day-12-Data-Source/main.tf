@@ -3,7 +3,8 @@ data "aws_subnet" "name" {
       name = "tag:Name"
       values = ["dev"]
     }
-    #data source is used to fetch the existing resource information. Here we are fetching the subnet information based on the tag name "dev"
+    #data source is used to fetch the existing resource information. 
+    #Here we are fetching the subnet information based on the tag name "dev"
   
 }
 

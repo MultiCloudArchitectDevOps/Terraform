@@ -1,6 +1,6 @@
 variable "dev" {
     type = bool
-    default = false
+    default = true
 }
 
 
