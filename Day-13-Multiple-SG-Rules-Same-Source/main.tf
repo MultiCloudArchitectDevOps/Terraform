@@ -1,6 +1,6 @@
 
-resource "aws_security_group" "devops-project-veera" {
-  name        = "devops-project-veera"
+resource "aws_security_group" "devops-project-Yogeshwar" {
+  name        = "devops-project-Yogeshwar"
   description = "Allow TLS inbound traffic"
 
 #  ingress {
@@ -48,6 +48,6 @@ resource "aws_security_group" "devops-project-veera" {
   }
 
   tags = {
-    Name = "devops-project-veera"
+    Name = "devops-project-Yogeshwar"
   }
 }
