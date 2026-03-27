@@ -1,6 +1,6 @@
 # Example EC2 instance (replace with yours if already existing)
 resource "aws_instance" "sql_runner" {
-  ami                    = "ami-0c02fb55956c7d316" # Amazon Linux 2
+  ami                    = "ami-02dfbd4ff395f2a1b" # Amazon Linux 2
   instance_type          = "t2.micro"
   key_name               = "my-key"                # Replace with your key pair name
   associate_public_ip_address = true
