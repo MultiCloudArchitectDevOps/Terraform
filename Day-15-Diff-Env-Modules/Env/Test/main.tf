@@ -1,5 +1,3 @@
-
-
 provider "aws" {
   region = var.region
   profile = "test"
@@ -19,7 +17,5 @@ module "ec2" {
   instance_type = var.instance_type
   env           = var.env
   subnet_id     = module.vpc.public_subnet_id
-  
-
   
 }
